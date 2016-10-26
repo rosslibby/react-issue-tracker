@@ -5,7 +5,7 @@ import './index.css';
 
 ReactDOM.render(
     <div>
-        <Header title="whatwhat" />
+        <Header title="Rails: issues" />
         <GetData />
         <List items={[{
             text: 'alpha',
