@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Label from './Label';
+import Title from './Title';
 
 class GetData extends Component {
     constructor (props) {
@@ -7,7 +8,7 @@ class GetData extends Component {
         this.state = { items: [] };
     }
 
-    componentDidMount = () => {
+    componentDidMount () {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://api.github.com/repos/rails/rails/issues?per_page=25', true);
         xhr.setRequestHeader('Accept', 'application/vnd.github.text+json');
@@ -21,7 +22,7 @@ class GetData extends Component {
         };
     }
 
-    formatLabel = (label) => {
+    formatLabel (label) {
         if (label.indexOf('https://api.github.com/repos/') !== -1) {
             let newLabel = label.replace('https://api.', 'https://');
             newLabel = newLabel.replace('.com/repos/', '.com/');
@@ -32,23 +33,34 @@ class GetData extends Component {
         return label;
     }
 
-    render = () => {
+    render () {
         return (
             <ol>
                 {this.state.items.map((item) => {
+
+                    const titleProps = {
+                        id: item.id,
+                        text: item.title
+                    };
+
                     return (
                         <li key={ item.id }>
-                            <strong>{ item.id }</strong>{' | '}<strong>{ item.title }</strong>{' | '}
+                            <Title { ...titleProps } />
                             <a href={ item.html_url } target="_blank">{'[link]'}</a>
                             <p>{ item.body_text.substr(0, 140) }</p>
                             <small><em>{ item.user.login }</em></small>
                             <img src={ item.user.avatar_url + '&s=88' } alt={ item.user.login } />
                             { item.labels.map((label, index) => {
+
+                                const labelProps = {
+                                    key: index,
+                                    text: label.name,
+                                    url: this.formatLabel(label.url)
+                                };
+
                                 return (
                                     <Label
-                                        key={ index }
-                                        text={ label.name }
-                                        url={ this.formatLabel(label.url) }
+                                        { ...labelProps }
                                     />
                                 );
                             }) }
