@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 class List extends Component {
-    render = () => {
+    render () {
         return (
             <ul>
                 {this.props.items.map((item) => {

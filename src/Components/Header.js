@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 class Header extends Component {
-    render = () => {
+    render () {
         return (
             <div>
                 <h1>{ this.props.title }</h1>
