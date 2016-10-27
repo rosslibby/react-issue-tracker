@@ -49,6 +49,24 @@ class Issue extends Component {
         }
     }
 
+    linkUsers (summary) {
+        const urlLeft = '(https://github.com/';
+        const urlRight = ')';
+        let split = summary.split('@');
+
+        for (let i = 0; i < split.length; i++) {
+            let item = split[i];
+            if (i !== split.length - 1) {
+                let nextItem = split[i + 1];
+                let user = nextItem.split(' ')[0];
+                split[i] = item.substr(0, item.length) + '[';
+                split[i + 1] = '@' + nextItem.replace(/[\. ,:-]+/g, ']' + urlLeft + user + urlRight);
+            }
+        }
+
+        return split.join(' ');
+    }
+
     render () {
         let userProps;
         let title;
@@ -57,7 +75,6 @@ class Issue extends Component {
         const commentProps = {
             comments: this.state.comments
         };
-        console.log(commentProps);
 
         const md = new Remarkable();
 
@@ -78,7 +95,7 @@ class Issue extends Component {
                     title = item.title;
                     state = item.state;
 
-                    summary = item.body;
+                    summary = this.linkUsers(item.body);
 
                     return null;
                 })}

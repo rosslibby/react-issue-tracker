@@ -5,9 +5,8 @@ class Comments extends Component {
         return (
             <div>
                 { this.props.comments.map((comment, index) => {
-                    console.log(comment);
                     return (
-                        <span key={index}>{ comment.body }</span>
+                        <span key={index}>{{__html: comment.body_html }}</span>
                     );
                 }) }
             </div>

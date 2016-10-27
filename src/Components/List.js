@@ -36,6 +36,7 @@ class List extends Component {
                                         />
                                     );
                                 }) }
+                                <span className="comments-count">{ 'Comments: ' + item.comments }</span>
                             </li>
                         );
                 })}
