@@ -41,7 +41,7 @@ class Default extends Component {
         };
 
         return (
-            <div>
+            <div className="main-wrapper">
                 <Header />
                 <Pagination { ...pageProps } />
                 <List { ...listProps } />

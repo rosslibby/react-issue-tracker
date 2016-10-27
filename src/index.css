@@ -1,0 +1,42 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-wrapper {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.17);
+    margin: 0 10%;
+    width: 80%;
+}
+
+img {
+    max-width: 44px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    border-bottom: 1px solid #eee;
+    list-style: none;
+    margin: 0;
+}
+
+.list-issue-header {
+    font-size: 13px;
+}
+
+.issue-id {
+    background-color: #eee;
+    color: #434a54;
+    font-weight: 700;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.list-issue-header a {
+    display: inline-block;
+    padding: 2px 4px;
+    text-decoration: none;
+}
