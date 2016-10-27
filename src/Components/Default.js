@@ -10,7 +10,7 @@ class Default extends Component {
     }
 
     componentDidMount () {
-        this.fetchPage();
+        // this.fetchPage();
     }
 
     fetchPage (numPages) {

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 class Title extends Component {
     render () {
@@ -10,7 +11,7 @@ class Title extends Component {
                 >
                     { this.props.id }
                 </span>
-                <span className="issue-title">{ this.props.text }</span>
+                <Link to={'/issue/' + this.props.id }>{ this.props.text }</Link>
             </div>
         );
     }

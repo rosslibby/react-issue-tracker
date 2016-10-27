@@ -7,7 +7,7 @@ import './index.css';
 ReactDOM.render(
     <Router history={ browserHistory }>
         <Route path="/" component={ Default } />
-        <Route path="/lol" component={ Issue } />
+        <Route path="/issue/:number" component={ Issue } />
     </Router>,
   document.getElementById('root')
 );

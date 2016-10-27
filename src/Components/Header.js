@@ -6,7 +6,6 @@ class Header extends Component {
         return (
             <ul>
                 <li><Link to={'/'}>Home</Link></li>
-                <li><Link to={'/lol'}>lol</Link></li>
             </ul>
         );
     }
