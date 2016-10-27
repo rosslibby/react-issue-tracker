@@ -5,19 +5,16 @@ class Header extends Component {
         return (
             <div>
                 <h1>{ this.props.title }</h1>
-                <p>{ this.props.description }</p>
             </div>
         );
     }
 };
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string
+    title: PropTypes.string.isRequired
 };
 
 Header.defaultProps = {
-    description: 'Your description goes here',
     title: 'Your title here'
 };
 

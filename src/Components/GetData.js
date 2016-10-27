@@ -9,7 +9,8 @@ class GetData extends Component {
     }
 
     componentDidMount () {
-        this.fetchData(1);
+        this.fetchData();
+        this.countPages();
     }
 
     fetchData (numPages) {
@@ -23,6 +24,24 @@ class GetData extends Component {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     this.setState({ items: JSON.parse(xhr.responseText), page: numPages });
+                }
+            }
+        };
+    }
+
+    countPages () {
+        let xhr = new XMLHttpRequest();
+        let openIssues;
+
+        xhr.open('GET', 'https://api.github.com/repos/rails/rails', true);
+        xhr.send(null);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    openIssues = JSON.parse(xhr.responseText).open_issues_count;
+
+                    for (let i = (openIssues / 25); i > 0; i--) {
+                    }
                 }
             }
         };
