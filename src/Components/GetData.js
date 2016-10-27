@@ -9,11 +9,11 @@ class GetData extends Component {
     }
 
     componentDidMount () {
-        this.fetchData();
+        this.fetchPage();
         this.countPages();
     }
 
-    fetchData (numPages) {
+    fetchPage (numPages) {
         numPages = this.state.page + numPages || 1;
 
         let xhr = new XMLHttpRequest();
@@ -24,6 +24,23 @@ class GetData extends Component {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     this.setState({ items: JSON.parse(xhr.responseText), page: numPages });
+                }
+            }
+        };
+    }
+
+    fetchIssue (issue) {
+        issue = issue || 1;
+        console.log(issue);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.github.com/repos/rails/rails/issues/' + issue, true);
+        xhr.setRequestHeader('Accept', 'application/vnd.github.text+json');
+        xhr.send(null);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log(JSON.parse(xhr.responseText));
                 }
             }
         };
@@ -61,21 +78,24 @@ class GetData extends Component {
     render () {
         return (
             <div>
-                <button onClick={() => {this.fetchData(-1)}}>{'Prev page'}</button>
-                <button onClick={() => {this.fetchData(1)}}>{'Next page'}</button>
+                <button onClick={() => {this.fetchPage(-1)}}>{'Prev page'}</button>
+                <button onClick={() => {this.fetchPage(1)}}>{'Next page'}</button>
                 <hr />
                 <ol>
                     {this.state.items.map((item) => {
 
                         const titleProps = {
-                            id: item.id,
+                            click: () => {
+                                this.fetchIssue(item.number);
+                            },
+                            id: item.number,
                             text: item.title
                         };
 
                         return (
                             <li key={ item.id }>
                                 <Title { ...titleProps } />
-                                <a href={ item.html_url } target="_blank">{'[link]'}</a>
+                                <a href={ item.html_url } target="_blank">{'[external link]'}</a>
                                 <p>{ item.body_text.substr(0, 140) }</p>
                                 <small><em>{ item.user.login }</em></small>
                                 <img src={ item.user.avatar_url + '&s=88' } alt={ item.user.login } />
