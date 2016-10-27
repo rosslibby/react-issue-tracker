@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Title from './Title';
+import Excerpt from './Excerpt';
 import Label from './Label';
+import Title from './Title';
 
 class List extends Component {
     render () {
@@ -8,37 +9,41 @@ class List extends Component {
             <ul>
                 {this.props.items.map((item) => {
                     const titleProps = {
-                            click: () => {
-                                this.fetchIssue(item.number);
-                            },
-                            id: item.number,
-                            text: item.title
-                        };
+                        click: () => {
+                            this.fetchIssue(item.number);
+                        },
+                        id: item.number,
+                        text: item.title
+                    };
 
-                        return (
-                            <li key={ item.id }>
-                                <Title { ...titleProps } />
-                                <a href={ item.html_url } target="_blank">{'[external link]'}</a>
-                                <p>{ item.body_text.substr(0, 140) }</p>
-                                <small><em>{ item.user.login }</em></small>
-                                <img src={ item.user.avatar_url + '&s=88' } alt={ item.user.login } />
-                                { item.labels.map((label, index) => {
+                    const excerptProps = {
+                        text: item.body_text
+                    };
 
-                                    const labelProps = {
-                                        key: index,
-                                        text: label.name,
-                                        url: label.url
-                                    };
+                    return (
+                        <li key={ item.id }>
+                            <Title { ...titleProps } />
+                            <a href={ item.html_url } target="_blank">{'[external link]'}</a>
+                            <Excerpt { ...excerptProps }  />
+                            <small><em>{ item.user.login }</em></small>
+                            <img src={ item.user.avatar_url + '&s=88' } alt={ item.user.login } />
+                            { item.labels.map((label, index) => {
 
-                                    return (
-                                        <Label
-                                            { ...labelProps }
-                                        />
-                                    );
-                                }) }
-                                <span className="comments-count">{ 'Comments: ' + item.comments }</span>
-                            </li>
-                        );
+                                const labelProps = {
+                                    key: index,
+                                    text: label.name,
+                                    url: label.url
+                                };
+
+                                return (
+                                    <Label
+                                        { ...labelProps }
+                                    />
+                                );
+                            }) }
+                            <span className="comments-count">{ 'Comments: ' + item.comments }</span>
+                        </li>
+                    );
                 })}
             </ul>
         );
