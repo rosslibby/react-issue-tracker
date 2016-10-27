@@ -60,7 +60,7 @@ class Issue extends Component {
                 let nextItem = split[i + 1];
                 let user = nextItem.split(' ')[0];
                 split[i] = item.substr(0, item.length) + '[';
-                split[i + 1] = '@' + nextItem.replace(/[\. ,:-]+/g, ']' + urlLeft + user + urlRight);
+                split[i + 1] = '@' + nextItem.replace(' ', ']' + urlLeft + user + urlRight);
             }
         }
 
@@ -76,29 +76,30 @@ class Issue extends Component {
             comments: this.state.comments
         };
 
+        this.state.issue.map((item) => {
+            userProps = {
+                avatar: {
+                    src: item.user.avatar_url + '&s=88',
+                    width: 44,
+                    height: 44
+                },
+                alt: item.user.login,
+                username: item.user.login
+            };
+
+            title = item.title;
+            state = item.state;
+
+            summary = this.linkUsers(item.body);
+
+            return null;
+        });
+
         const md = new Remarkable();
 
         return (
-            <div>
+            <div className="main-wrapper">
                 <Header />
-                {this.state.issue.map((item) => {
-                    userProps = {
-                        avatar: {
-                            src: item.user.avatar_url + '&s=88',
-                            width: 44,
-                            height: 44
-                        },
-                        alt: item.user.login,
-                        username: item.user.login
-                    };
-
-                    title = item.title;
-                    state = item.state;
-
-                    summary = this.linkUsers(item.body);
-
-                    return null;
-                })}
 
                 <h1>{ title }</h1>
                 <h1>{ state }</h1>

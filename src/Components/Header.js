@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 class Header extends Component {
     render () {
         return (
-            <ul>
-                <li><Link to={'/'}>Home</Link></li>
+            <ul className="issue-header">
+                <li><Link to={'/'}>Go back</Link></li>
             </ul>
         );
     }
