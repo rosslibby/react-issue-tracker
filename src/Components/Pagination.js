@@ -22,7 +22,7 @@ class Pagination extends Component {
 
     render () {
         return (
-            <div>
+            <div className="pagination">
                 <button onClick={() => { this.props.prev() }}>{'Prev page'}</button>
                 { this.pageButtons(this.props.issues).map((page, index) => {
                     if (!isNaN(parseInt(page, 10))) {

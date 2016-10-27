@@ -14,7 +14,11 @@ class Label extends Component {
 
     render () {
         return (
-            <a href={ this.formatLabel(this.props.url) } target="_blank">{ this.props.text }</a>
+            <a
+                href={ this.formatLabel(this.props.url) }
+                target="_blank"
+                className="label"
+            >{ this.props.text }</a>
         );
     }
 };

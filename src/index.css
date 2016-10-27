@@ -18,13 +18,24 @@ ul {
 }
 
 ul li {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    float: left;
+    padding-bottom: 16px;
     list-style: none;
     margin: 0;
+    width: 100%;
+}
+
+ul li:first-child .list-issue-header {
+    border-top: none;
 }
 
 .list-issue-header {
+    border-bottom: 2px solid #eee;
+    border-top: 6px solid #eee;
     font-size: 13px;
+    padding: 8px;
 }
 
 .issue-id {
@@ -36,7 +47,81 @@ ul li {
 }
 
 .list-issue-header a {
+    color: #434a54;
     display: inline-block;
+    font-weight: bold;
     padding: 2px 4px;
     text-decoration: none;
+    text-transform: uppercase;
+}
+
+a.title-link {
+    background-color: #eee;
+    border-bottom-left-radius: 2px;
+    color: #434a54;
+    float: right;
+    font-size: 11px;
+    font-weight: 100;
+    padding: 4px;
+    text-decoration: none;
+}
+
+.excerpt {
+    font-size: 13px;
+    padding: 4px 8px;
+}
+
+.user {
+    display: block;
+    float: left;
+    padding: 0 8px;
+    width: 100%;
+}
+
+.user > img {
+    float: left;
+    border: 4px solid white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27);
+}
+
+.user > span {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.comments-count {
+    display: block;
+    float: left;
+    font-size: 13px;
+    padding: 16px 8px 0 8px;
+    width: 100%;
+}
+
+.label {
+    background-color: #37bc9b;
+    border-radius: 2px;
+    color: #000;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 0;
+    margin-left: 8px;
+    padding: 4px;
+    text-decoration: none;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination button {
+    background-color: #48cfad;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    color: #2e2e2e;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin: 2px 1px;
+    padding: 5px 8px;
 }
