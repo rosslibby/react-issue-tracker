@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import User from './User';
+import Remarkable from 'remarkable';
 
 class Issue extends Component {
     constructor (props) {
@@ -33,6 +34,9 @@ class Issue extends Component {
         let userProps;
         let title;
         let state;
+        let summary;
+
+        const md = new Remarkable();
 
         return (
             <div>
@@ -51,12 +55,15 @@ class Issue extends Component {
                     title = item.title;
                     state = item.state;
 
+                    summary = item.body;
+
                     return null;
                 })}
 
                 <h1>{ title }</h1>
                 <h1>{ state }</h1>
                 <User { ...userProps } />
+                <div dangerouslySetInnerHTML={{__html: md.render(summary)}} />
             </div>
         );
     }
