@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { GetData, Header } from './Components/';
+import { Default, Issue } from './Components/';
+import { Router, Route, browserHistory } from 'react-router';
 import './index.css';
 
 ReactDOM.render(
-    <div>
-        <Header title="Rails: issues" />
-        <GetData />
-    </div>,
+    <Router history={ browserHistory }>
+        <Route path="/" component={ Default } />
+        <Route path="/lol" component={ Issue } />
+    </Router>,
   document.getElementById('root')
 );
