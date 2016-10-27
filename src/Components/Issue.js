@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import User from './User';
+import Comments from './Comments';
 import Remarkable from 'remarkable';
 
 class Issue extends Component {
     constructor (props) {
         super(props);
 
-        this.state = { issue: [] };
+        this.state = { issue: [], comments: [] };
     }
 
     componentDidMount () {
@@ -24,10 +25,28 @@ class Issue extends Component {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    this.setState({ issue: [JSON.parse(xhr.responseText)]});
+                    let res = JSON.parse(xhr.responseText);
+                    this.setState({ issue: [res], comments: this.state.comments});
+                    this.fetchComments(res.comments, res.comments_url);
                 }
             }
         };
+    }
+
+    fetchComments (count, url) {
+        if (count > 0) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.setRequestHeader('Accept', 'application/vnd.github.full+json');
+            xhr.send(null);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        this.setState({ issue: this.state.issue, comments: JSON.parse(xhr.responseText)});
+                    }
+                }
+            };
+        }
     }
 
     render () {
@@ -35,6 +54,10 @@ class Issue extends Component {
         let title;
         let state;
         let summary;
+        const commentProps = {
+            comments: this.state.comments
+        };
+        console.log(commentProps);
 
         const md = new Remarkable();
 
@@ -64,6 +87,7 @@ class Issue extends Component {
                 <h1>{ state }</h1>
                 <User { ...userProps } />
                 <div dangerouslySetInnerHTML={{__html: md.render(summary)}} />
+                <Comments { ...commentProps } />
             </div>
         );
     }
