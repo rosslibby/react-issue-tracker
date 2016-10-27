@@ -18,9 +18,7 @@ class Excerpt extends Component {
 
     render () {
         return (
-            <p>
-                { this.getExcerpt(this.props.text) }
-            </p>
+            <p>{ this.getExcerpt(this.props.text) }</p>
         );
     }
 };

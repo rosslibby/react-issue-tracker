@@ -25,20 +25,18 @@ class Pagination extends Component {
             <div>
                 <button onClick={() => { this.props.prev() }}>{'Prev page'}</button>
                 { this.pageButtons(this.props.issues).map((page, index) => {
-                        {
-                            if (!isNaN(parseInt(page, 10))) {
-                                return (
-                                    <button
-                                        key={ index }
-                                        onClick={() => { this.props.page(page, true) }}
-                                    >{ page }</button>
-                                );
-                            } else {
-                                return (
-                                    <span>{ page }</span>
-                                );
-                            }
-                        }
+                    if (!isNaN(parseInt(page, 10))) {
+                        return (
+                            <button
+                                key={ index }
+                                onClick={() => { this.props.page(page, true) }}
+                            >{ page }</button>
+                        );
+                    } else {
+                        return (
+                            <span key={ index }>{ page }</span>
+                        );
+                    }
                 }) }
                 <button onClick={() => { this.props.next() }}>{'Next page'}</button>
             </div>

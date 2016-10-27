@@ -70,8 +70,8 @@ class Default extends Component {
 
         return (
             <div className="main-wrapper">
-                <Pagination { ...pageProps } />
                 <List { ...listProps } />
+                <Pagination { ...pageProps } />
             </div>
         );
     }
