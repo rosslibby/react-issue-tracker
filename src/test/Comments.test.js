@@ -1,17 +1,32 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import { Comments } from '../Components/';
 
-it('renders the number of comments that are passed in', () => {
-    const data = [
-        {body_html: 'alpha'},
-        {body_html: 'beta'}
-    ];
-    const comments = shallow(<Comments comments={ data } />);
-    const commentsHtml = <div>
-                            <span dangerouslySetInnerHTML={{"__html": "alpha"}} />
-                            <span dangerouslySetInnerHTML={{"__html": "beta"}} />
-                        </div>;
+it('should set innerHTML', () => {
+    const data = [{
+        body_html: '<p>test</p>'
+    }];
+    const comments = renderer.create(<Comments comments={ data } />);
 
-    expect(comments.contains(commentsHtml)).toBe(true);
+    let tree = comments.toJSON();
+
+    expect(tree.children[0].props.dangerouslySetInnerHTML.__html).toEqual('<p>test</p>');
+});
+
+it('should render all the comments available', () => {
+    const data = [
+        {
+            body_html: '<p>alpha</p>'
+        },
+        {
+            body_html: '<span>beta</span>'
+        },
+        {
+            body_html: '<a href="#">gamma</a>'
+        }
+    ];
+    const comments = renderer.create(<Comments comments={ data } />);
+    const tree = comments.toJSON();
+
+    expect(tree.children.length).toEqual(3);
 });
