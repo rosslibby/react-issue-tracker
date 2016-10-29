@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Comments extends Component {
+    createMarkup (comment) {
+        return {__html: comment};
+    }
+
     render () {
 
         return (
@@ -9,7 +13,7 @@ class Comments extends Component {
                     return (
                         <span
                             key={ index }
-                            dangerouslySetInnerHTML={{__html: comment.body_html }}
+                            dangerouslySetInnerHTML={ this.createMarkup(comment.body_html) }
                         ></span>
                     );
                 }) }
