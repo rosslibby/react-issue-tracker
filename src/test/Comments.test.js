@@ -3,9 +3,11 @@ import renderer from 'react-test-renderer';
 import { Comments } from '../Components/';
 
 it('should set innerHTML', () => {
-    const data = [{
-        body_html: '<p>test</p>'
-    }];
+    const data = [
+        {
+            body_html: '<p>test</p>'
+        }
+    ];
     const comments = renderer.create(<Comments comments={ data } />);
 
     let tree = comments.toJSON();

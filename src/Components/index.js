@@ -4,6 +4,7 @@ import Issue from './Issue';
 import Label from './Label';
 import List from './List';
 import Title from './Title';
+import User from './User';
 import Excerpt from './Excerpt';
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
     Issue,
     Label,
     List,
-    Title
+    Title,
+    User
 };
