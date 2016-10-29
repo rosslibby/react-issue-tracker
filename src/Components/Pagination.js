@@ -5,12 +5,12 @@ class Pagination extends Component {
         let numPages = parseInt(num / 25, 10);
         let pageArr = [];
 
-        if (numPages % 25) {
+        if (num % 25) {
             numPages++;
         }
 
-        if (numPages > 7) {
-            pageArr = [1, 2, 3, 4, 5, '...', numPages];
+        if (numPages > 10) {
+            pageArr = [1, 2, 3, 4, 5, 6, 7, '...', numPages - 1, numPages];
         } else {
             for (let i = 0; i < numPages; i++) {
                 pageArr.push(i + 1);
