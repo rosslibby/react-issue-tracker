@@ -88,6 +88,19 @@
             color: #fff;
             padding: 6px 14px;
         }
+
+        .pagination__btn:hover,
+        .pagination__btn--active {
+            background-color: #404040;
+            border-color: #1d1d1d;
+            cursor: pointer;
+        }
+
+        .pagination__btn:focus {
+            background-color: #606060;
+            border-color: #2e2e2e;
+            outline: none;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +115,7 @@
             <button class="pagination__btn">2</button>
             <button class="pagination__btn">3</button>
             <button class="pagination__btn">4</button>
-            <button class="pagination__btn">5</button>
+            <button class="pagination__btn pagination__btn--active">5</button>
             <button class="pagination__btn">6</button>
             <button class="pagination__btn">7</button>
             <button class="pagination__btn">8</button>
