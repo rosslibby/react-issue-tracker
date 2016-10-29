@@ -1,0 +1,8 @@
+exports[`test should have a link 1`] = `
+<a
+  className="label"
+  href="#"
+  target="_blank">
+  link text
+</a>
+`;
