@@ -39,6 +39,8 @@ class Comments extends Component {
         if (hour > 12) {
             am = false;
             hour -= 12;
+        } else if (hour === 0) {
+            hour = 12;
         }
 
         theTime = hour + ':' + minute;
