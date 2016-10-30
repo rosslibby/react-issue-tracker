@@ -238,11 +238,6 @@
             text-decoration: underline;
         }
 
-        .card__footer {
-            display: flex;
-            flex-direction: row;
-        }
-
         .card-data {
             background-color: #eee;
             border-radius: 2px;
@@ -251,6 +246,7 @@
             font-size: 12px;
             font-weight: 100;
             text-shadow: 0 1px #fefefe;
+            margin-right: 2px;
             margin-top: 10px;
             padding: 4px 8px;
             text-decoration: none;
@@ -424,7 +420,7 @@
                     <h2 class="card__header__title"><a href="#" class="card__header__title__link">Use bulk SQL INSERT when bootstrapping fixtures</a></h2>
                 </div>
                 <p class="excerpt">We've been using this patch at Shopify and it makes fixtures insert way faster because we can leverage bulk INSERT. I think this patch is...</p>
-                <div clas="card__footer">
+                <div>
                     <div class="labels">
                         <a class="label" href="https://github.com/rails/rails/labels/activerecord" target="_blank">activerecord</a>
                         <a class="label" href="https://github.com/rails/rails/labels/needs%20work" target="_blank">needs work</a>
@@ -444,7 +440,7 @@
                     <h2 class="card__header__title"><a href="#" class="card__header__title__link">How to monitor DB connections?</a></h2>
                 </div>
                 <p class="excerpt">I have suspicion that my application have leaking db connections that being borrowed and not returned at the right time. I could not find...</p>
-                <div clas="card__footer">
+                <div>
                     <div class="labels">
                         <a class="label" href="https://github.com/rails/rails/labels/activerecord" target="_blank">activerecord</a>
                         <a class="label" href="https://github.com/rails/rails/labels/needs%20feedback" target="_blank">needs feedback</a>

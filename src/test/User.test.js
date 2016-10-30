@@ -21,8 +21,8 @@ it('should have <img> as first child', () => {
     expect(tree.children[0].type).toEqual('img');
 });
 
-it('should have <span> as last child', () => {
-    expect(tree.children[1].type).toEqual('span');
+it('should have <a> as last child', () => {
+    expect(tree.children[1].type).toEqual('a');
 });
 
 it('should have a single word in the <span> tag', () => {

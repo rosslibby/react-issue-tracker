@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Excerpt from './Excerpt';
-import Label from './Label';
+import Labels from './Labels';
 import Title from './Title';
 import User from './User';
 
@@ -34,28 +34,19 @@ class List extends Component {
                     return (
                         <div className="card" key={ item.id }>
                             <Title { ...titleProps } />
-                            <a
-                                className="title-link"
-                                href={ item.html_url }
-                                target="_blank"
-                            >{'external link'}</a>
                             <Excerpt { ...excerptProps }  />
-                            <User { ...userProps } />
-                            { item.labels.map((label, index) => {
-
-                                const labelProps = {
-                                    key: index,
-                                    text: label.name,
-                                    url: label.url
-                                };
-
-                                return (
-                                    <Label
-                                        { ...labelProps }
-                                    />
-                                );
-                            }) }
-                            <span className="comments-count">{ 'Comments: ' + item.comments }</span>
+                            <div>
+                                <Labels labels={ item.labels } />
+                                <User { ...userProps } />
+                                <span className="card-data">{ 'Comments: ' + item.comments }</span>
+                                <span className="card-data">
+                                    <a
+                                        className="card-data__link"
+                                        href={ item.html_url }
+                                        target="_blank"
+                                    >{'external link'}</a>
+                                </span>
+                            </div>
                         </div>
                     );
                 })}

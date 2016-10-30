@@ -46,13 +46,9 @@ it('should have 2 child cards', () => {
     expect(tree.children.length).toEqual(2);
 });
 
-it('should have 5 child elements for each card', () => {
+it('should have 3 child elements for each card', () => {
     tree.children.forEach(function (item, index) {
-        if (data.items[index].labels.length) {
-            expect(item.children.length).toEqual(6);
-        } else {
-            expect(item.children.length).toEqual(5);
-        }
+        expect(item.children.length).toEqual(3);
     });
 });
 
@@ -63,40 +59,33 @@ it('should have <div> with class of "card__header" as first card element', () =>
     expect(tree.children[1].children[0].props.className).toEqual('card__header');
 });
 
-it('should have <a> with class of "title-link" as second card element', () => {
-    expect(tree.children[0].children[1].type).toEqual('a');
-    expect(tree.children[0].children[1].props.className).toEqual('title-link');
-    expect(tree.children[1].children[1].type).toEqual('a');
-    expect(tree.children[1].children[1].props.className).toEqual('title-link');
+it('should have <p> with class of "excerpt" as second card element', () => {
+    expect(tree.children[0].children[1].type).toEqual('p');
+    expect(tree.children[0].children[1].props.className).toEqual('excerpt');
+    expect(tree.children[1].children[1].type).toEqual('p');
+    expect(tree.children[1].children[1].props.className).toEqual('excerpt');
 });
 
-it('should have <p> with class of "excerpt" as third card element', () => {
-    expect(tree.children[0].children[2].type).toEqual('p');
-    expect(tree.children[0].children[2].props.className).toEqual('excerpt');
-    expect(tree.children[1].children[2].type).toEqual('p');
-    expect(tree.children[1].children[2].props.className).toEqual('excerpt');
+it('should have <div> with 4 children as third card element', () => {
+    expect(tree.children[0].children[2].type).toEqual('div');
+    expect(tree.children[0].children[2].children.length).toEqual(4);
+    expect(tree.children[1].children[2].type).toEqual('div');
+    expect(tree.children[1].children[2].children.length).toEqual(4);
 });
 
-it('should have <div> with class of "user" as fourth card element', () => {
-    expect(tree.children[0].children[3].type).toEqual('div');
-    expect(tree.children[0].children[3].props.className).toEqual('user');
-    expect(tree.children[1].children[3].type).toEqual('div');
-    expect(tree.children[1].children[3].props.className).toEqual('user');
-});
+// if (data.items[0].labels.length) {
+//     it('should have <a> with class of "label" as fifth card element', () => {
+//         expect(tree.children[1].children[4].type).toEqual('a');
+//         expect(tree.children[1].children[4].props.className).toEqual('label');
+//     });
 
-if (data.items[0].labels.length) {
-    it('should have <a> with class of "label" as fifth card element', () => {
-        expect(tree.children[1].children[4].type).toEqual('a');
-        expect(tree.children[1].children[4].props.className).toEqual('label');
-    });
-
-    it('should have <span> with class of "comments-count" as sixth card element', () => {
-        expect(tree.children[1].children[tree.children[0].children.length - 1].type).toEqual('span');
-        expect(tree.children[1].children[tree.children[0].children.length - 1].props.className).toEqual('comments-count');
-    });
-} else {
-    it('should have <span> with class of "comments-count" as fifth card element', () => {
-        expect(tree.children[0].children[4].type).toEqual('span');
-        expect(tree.children[0].children[4].props.className).toEqual('comments-count');
-    });
-}
+//     it('should have <span> with class of "comments-count" as sixth card element', () => {
+//         expect(tree.children[1].children[tree.children[0].children.length - 1].type).toEqual('span');
+//         expect(tree.children[1].children[tree.children[0].children.length - 1].props.className).toEqual('comments-count');
+//     });
+// } else {
+//     it('should have <span> with class of "comments-count" as fifth card element', () => {
+//         expect(tree.children[0].children[4].type).toEqual('span');
+//         expect(tree.children[0].children[4].props.className).toEqual('comments-count');
+//     });
+// }
