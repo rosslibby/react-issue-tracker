@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Label from './Label';
+import Labels from './Labels';
 import User from './User';
 import Comments from './Comments';
 import Remarkable from 'remarkable';
@@ -88,7 +88,8 @@ class Issue extends Component {
                     height: 44
                 },
                 alt: item.user.login,
-                username: item.user.login
+                username: item.user.login,
+                className: 'user page__user'
             };
 
             title = item.title;
@@ -103,26 +104,21 @@ class Issue extends Component {
         const md = new Remarkable();
 
         return (
-            <div className="main-wrapper">
+            <div>
                 <Header />
                 <div className="main">
-                    <h1>{ title }</h1>
-                    <h1>{ state }</h1>
-                    <User { ...userProps } />
-                    <div dangerouslySetInnerHTML={{__html: md.render(summary)}} />
-                    { labels.map((label, index) => {
-                        const labelProps = {
-                            key: index,
-                            text: label.name,
-                            url: label.url
-                        };
+                    <div className="page">
+                        <h1 className="page__title">{ title } <span className="badge">{ state }</span></h1>
+                        <User { ...userProps } />
+                        <div
+                            className="page__content"
+                            dangerouslySetInnerHTML={{__html: md.render(summary)}}
+                        />
+                        <div className="page__footer">
+                            <Labels labels={ labels } className="labels page__footer__labels" />
+                        </div>
+                    </div>
 
-                        return (
-                            <Label
-                                { ...labelProps }
-                            />
-                        );
-                    }) }
                     <Comments { ...commentProps } />
                 </div>
             </div>

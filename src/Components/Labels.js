@@ -4,7 +4,7 @@ import Label from './Label';
 class Labels extends Component {
     render () {
         return (
-            <div className="labels">
+            <div className={ this.props.className }>
                 { this.props.labels.map((label, index) => {
                     const labelProps = {
                         key: index,
@@ -21,6 +21,10 @@ class Labels extends Component {
             </div>
         );
     }
+};
+
+Labels.defaultProps = {
+    className: 'labels'
 };
 
 export default Labels;

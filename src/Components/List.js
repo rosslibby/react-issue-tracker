@@ -24,8 +24,8 @@ class List extends Component {
                     const userProps = {
                         avatar: {
                             src: item.user.avatar_url + '&s=88',
-                            width: 44,
-                            height: 44
+                            width: 26,
+                            height: 26
                         },
                         alt: item.user.login,
                         username: item.user.login

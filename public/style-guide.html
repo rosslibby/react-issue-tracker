@@ -290,7 +290,8 @@
             padding: 24px 24px 4px 24px;
         }
 
-        .page p {
+        .page p,
+        .page pre {
             padding: 0 24px;
         }
 
@@ -303,12 +304,19 @@
             padding: 24px;
         }
 
+        ol,
+        ul,
         .page__list {
             margin: 0;
         }
 
+        li,
         .page__list__item {
             padding: 8px;
+        }
+
+        .page__user {
+            margin: 24px 24px 0 24px;
         }
 
         .page__footer {
@@ -365,6 +373,10 @@
 
         <div class="page">
             <h1 class="page__title">Testing fails if scaffolded model is named "App" <span class="badge">Open</span></h1>
+            <div class="user page__user">
+                <img src="http://placehold.it/44x44" alt="avatar" class="user user__image" />
+                <a href="#" class="user user__username" target="_blank">ross</a>
+            </div>
             <h3>Steps to reproduce</h3>
             <ol class="page__list">
                 <li class="page__list__item">Roll a new rails 5 app rails new myapp and cd in cd myapp</li>
