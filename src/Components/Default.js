@@ -61,6 +61,8 @@ class Default extends Component {
             items: this.state.items
         };
 
+        console.log(this.state.items);
+
         const pageProps = {
             next: () => { this.fetchPage(1) },
             prev: () => { this.fetchPage(-1) },

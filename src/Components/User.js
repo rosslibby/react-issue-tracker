@@ -4,7 +4,7 @@ class User extends Component {
     render () {
         return (
             <div className="user">
-                <img { ...this.props.avatar } alt={ this.props.alt } />
+                <img { ...this.props.avatar } alt={ this.props.alt } className="user__image" />
                 <span>{ this.props.username }</span>
             </div>
         );
