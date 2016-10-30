@@ -4,13 +4,22 @@ class Pagination extends Component {
     pageButtons (num) {
         let numPages = parseInt(num / 25, 10);
         let pageArr = [];
+        const currentPage = parseInt(this.props.current, 10);
 
         if (num % 25) {
             numPages++;
         }
 
         if (numPages > 10) {
-            pageArr = [1, 2, 3, 4, 5, 6, 7, '...', numPages - 1, numPages];
+            if (currentPage > 6) {
+                for (let i = currentPage - 5; i < currentPage + 5; i++) {
+                    pageArr.push(i);
+                }
+            } else {
+                for (let i = 1; i < 11; i++) {
+                    pageArr.push(i);
+                }
+            }
         } else {
             for (let i = 0; i < numPages; i++) {
                 pageArr.push(i + 1);

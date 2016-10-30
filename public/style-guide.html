@@ -53,19 +53,42 @@
             background-color: #bdc3c7;
         }
 
-        h1 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             color: #3d3d3d;
-            display: inline-flex;
+            display: flex;
             margin: 0;
         }
 
         .label {
+            background-color: #fff;
             border-radius: 2px;
             box-shadow: 0 0 2px rgba(0, 0 ,0, .17);
             color: #3f3f3f;
             display: inline-flex;
             font-size: 11px;
+            margin-right: 3px;
             padding: 4px 8px;
+            text-decoration: none;
+        }
+
+        .badge {
+            background-color: #48c9b0;
+            border: 1px solid #fff;
+            border-radius: 2px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, .17);
+            color: #fff;
+            display: inline-flex;
+            font-size: 11px;
+            padding: 4px 8px;
+            text-transform: uppercase;
+        }
+
+        .badge--inverse {
+            background-color: #404040;
         }
 
         .pagination {
@@ -122,8 +145,8 @@
             border: 3px solid #fff;
             border-radius: 4px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, .17);
-            height: 44px;
-            width: 44px;
+            height: 26px;
+            width: 26px;
         }
 
         .user__username {
@@ -134,9 +157,95 @@
             color: #404040;
             font-size: 12px;
             font-weight: bold;
+            line-height: 16px;
             margin: 0 5px;
-            padding: 3px 10px;
+            padding: 5px 10px;
             text-decoration: none;
+        }
+
+        .code {
+            border-radius: 2px;
+            color: #3f3f3f;
+            display: inline-flex;
+            font-size: 11px;
+            padding: 3px 8px;
+            background-color: #eee;
+        }
+
+        .description {
+            font-size: 14px;
+            padding: 0 8px;
+        }
+
+        .description__link {
+            background-color: #eee;
+            border-radius: 2px;
+            color: #3bafda;
+            padding: 0 4px;
+            text-decoration: none;
+        }
+
+        .description__link:hover {
+            text-decoration: underline;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 769px) {
+            .cards {
+                margin: 0 auto;
+                width: 768px;
+            }
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .17);
+            display: flex;
+            flex-direction: column;
+            margin: 4px 0;
+            padding: 12px 24px;
+        }
+
+        .card__header {
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            padding-bottom: 12px;
+        }
+
+        .card__header__title {
+            padding: 0 10px;
+        }
+
+        .card__header__title__link {
+            color: #404040;
+            text-decoration: none;
+        }
+
+        .card__header__title__link:hover {
+            text-decoration: underline;
+        }
+
+        .card__footer {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .labels {
+            align-items: flex-start;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .excerpt {
+            font-size: 14px;
         }
     </style>
 </head>
@@ -146,12 +255,61 @@
         <button class="btn btn--primary">Primary</button>
         <button class="btn btn--secondary">Secondary</button>
         <span class="label">Label</span>
+        <span class="badge">Open</span>
+        <span class="badge badge--inverse">Closed</span>
     </header>
     <div class="main">
         <!-- <User /> -->
         <div class="user">
             <img src="http://placehold.it/44x44" alt="avatar" class="user user__image" />
-            <a href="#" class="user user__username">rosslibby</a>
+            <a href="#" class="user user__username" target="_blank">rosslibby</a>
+        </div>
+
+        <!-- Code -->
+        <code class="code">public static void main(String[] args) {}</code>
+
+        <!-- Description -->
+        <p class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet aliquam malesuada. Quisque varius consequat dui, quis pulvinar diam vehicula vitae. Phasellus gravida erat id dolor vehicula, eget pretium mauris feugiat. Donec in felis nec <a href="#" class="description__link">@libero</a> congue porta. Nam sit amet purus dapibus, tempor dolor sit amet, pulvinar sem. Vestibulum ac mi lacinia, placerat urna sed, congue quam. Morbi pretium dui sed turpis fermentum, vitae gravida sem pulvinar. Suspendisse potenti. <code class="code">public static void main(String[] args) {}</code> Pellentesque id nisl eget magna convallis dapibus et sed nibh. Praesent facilisis dolor elementum sagittis molestie. Integer a finibus neque. Nunc rutrum elit non metus consectetur dictum. Vestibulum eu fermentum erat.
+        </p>
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <div class="card__header">
+                    <span class="badge">26901</span>
+                    <h2 class="card__header__title"><a href="#" class="card__header__title__link">Use bulk SQL INSERT when bootstrapping fixtures</a></h2>
+                </div>
+                <p class="excerpt">We've been using this patch at Shopify and it makes fixtures insert way faster because we can leverage bulk INSERT. I think this patch is...</p>
+                <div clas="card__footer">
+                    <div class="labels">
+                        <a class="label" href="https://github.com/rails/rails/labels/activerecord" target="_blank">activerecord</a>
+                        <a class="label" href="https://github.com/rails/rails/labels/needs%20work" target="_blank">needs work</a>
+                    </div>
+                    <div class="user">
+                        <img src="https://avatars.githubusercontent.com/u/522155?v=3&s=88" alt="kirs" class="user user__image" />
+                        <a href="https://github.com/kirs" class="user user__username" target="_blank">kirs</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__header">
+                    <span class="badge">26901</span>
+                    <h2 class="card__header__title"><a href="#" class="card__header__title__link">Use bulk SQL INSERT when bootstrapping fixtures</a></h2>
+                </div>
+                <p class="excerpt">We've been using this patch at Shopify and it makes fixtures insert way faster because we can leverage bulk INSERT. I think this patch is...</p>
+                <div clas="card__footer">
+                    <div class="labels">
+                        <a class="label" href="https://github.com/rails/rails/labels/activerecord" target="_blank">activerecord</a>
+                        <a class="label" href="https://github.com/rails/rails/labels/needs%20work" target="_blank">needs work</a>
+                    </div>
+                    <div class="user">
+                        <img src="https://avatars.githubusercontent.com/u/522155?v=3&s=88" alt="kirs" class="user user__image" />
+                        <a href="https://github.com/kirs" class="user user__username" target="_blank">kirs</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- <Pagination /> -->

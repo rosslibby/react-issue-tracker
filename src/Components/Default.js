@@ -61,13 +61,12 @@ class Default extends Component {
             items: this.state.items
         };
 
-        console.log(this.state.items);
-
         const pageProps = {
             next: () => { this.fetchPage(1) },
             prev: () => { this.fetchPage(-1) },
             page: (num) => { this.fetchPage(num, true) },
-            issues: this.state.issues
+            issues: this.state.issues,
+            current: this.props.params.number
         };
 
         return (
