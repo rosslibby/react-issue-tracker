@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 import List from './List';
 import Pagination from './Pagination';
 import { browserHistory } from 'react-router';
@@ -71,8 +72,11 @@ class Default extends Component {
 
         return (
             <div className="main-wrapper">
-                <List { ...listProps } />
-                <Pagination { ...pageProps } />
+                <Header />
+                <div className="main">
+                    <List { ...listProps } />
+                    <Pagination { ...pageProps } />
+                </div>
             </div>
         );
     }

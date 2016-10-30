@@ -32,22 +32,23 @@ class Pagination extends Component {
     render () {
         return (
             <div className="pagination">
-                <button onClick={() => { this.props.prev() }}>{'Prev page'}</button>
+                <button
+                    className="pagination__btn pagination__btn--prev"
+                    onClick={() => { this.props.prev() }}
+                >{ String.fromCharCode('0x2039') }</button>
                 { this.pageButtons(this.props.issues).map((page, index) => {
-                    if (!isNaN(parseInt(page, 10))) {
-                        return (
-                            <button
-                                key={ index }
-                                onClick={() => { this.props.page(page, true) }}
-                            >{ page }</button>
-                        );
-                    } else {
-                        return (
-                            <span key={ index }>{ page }</span>
-                        );
-                    }
+                    return (
+                        <button
+                            className="pagination__btn"
+                            key={ index }
+                            onClick={() => { this.props.page(page, true) }}
+                        >{ page }</button>
+                    );
                 }) }
-                <button onClick={() => { this.props.next() }}>{'Next page'}</button>
+                <button
+                    className="pagination__btn pagination__btn--next"
+                    onClick={() => { this.props.next() }}
+                >{ String.fromCharCode('0x203A') }</button>
             </div>
         );
     }

@@ -4,9 +4,9 @@ import { Link } from 'react-router';
 class Header extends Component {
     render () {
         return (
-            <ul className="issue-header">
-                <li><Link to={'/'}>Go back</Link></li>
-            </ul>
+            <header className="header">
+                <h1 className="center-text">Twitter Code Challenge</h1>
+            </header>
         );
     }
 };

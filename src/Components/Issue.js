@@ -105,25 +105,26 @@ class Issue extends Component {
         return (
             <div className="main-wrapper">
                 <Header />
+                <div className="main">
+                    <h1>{ title }</h1>
+                    <h1>{ state }</h1>
+                    <User { ...userProps } />
+                    <div dangerouslySetInnerHTML={{__html: md.render(summary)}} />
+                    { labels.map((label, index) => {
+                        const labelProps = {
+                            key: index,
+                            text: label.name,
+                            url: label.url
+                        };
 
-                <h1>{ title }</h1>
-                <h1>{ state }</h1>
-                <User { ...userProps } />
-                <div dangerouslySetInnerHTML={{__html: md.render(summary)}} />
-                { labels.map((label, index) => {
-                    const labelProps = {
-                        key: index,
-                        text: label.name,
-                        url: label.url
-                    };
-
-                    return (
-                        <Label
-                            { ...labelProps }
-                        />
-                    );
-                }) }
-                <Comments { ...commentProps } />
+                        return (
+                            <Label
+                                { ...labelProps }
+                            />
+                        );
+                    }) }
+                    <Comments { ...commentProps } />
+                </div>
             </div>
         );
     }
