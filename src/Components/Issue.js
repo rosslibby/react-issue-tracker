@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import Label from './Label';
 import User from './User';
 import Comments from './Comments';
 import Remarkable from 'remarkable';
@@ -74,6 +75,7 @@ class Issue extends Component {
         let title;
         let state;
         let summary;
+        let labels = [];
         const commentProps = {
             comments: this.state.comments
         };
@@ -91,6 +93,7 @@ class Issue extends Component {
 
             title = item.title;
             state = item.state;
+            labels = item.labels;
 
             summary = this.linkUsers(item.body);
 
@@ -107,6 +110,19 @@ class Issue extends Component {
                 <h1>{ state }</h1>
                 <User { ...userProps } />
                 <div dangerouslySetInnerHTML={{__html: md.render(summary)}} />
+                { labels.map((label, index) => {
+                    const labelProps = {
+                        key: index,
+                        text: label.name,
+                        url: label.url
+                    };
+
+                    return (
+                        <Label
+                            { ...labelProps }
+                        />
+                    );
+                }) }
                 <Comments { ...commentProps } />
             </div>
         );

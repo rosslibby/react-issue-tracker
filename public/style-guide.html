@@ -168,6 +168,7 @@
             text-decoration: none;
         }
 
+        code,
         .code {
             border-radius: 2px;
             color: #3f3f3f;
@@ -281,9 +282,34 @@
                 border: 1px solid #eee;
                 box-shadow: 0 0 3px 1px rgba(0, 0, 0, .05);
                 margin: 0 auto;
-                padding: 12px;
-                width: 1000px;
+                width: 1024px;
             }
+        }
+
+        .page h3 {
+            padding: 24px 24px 4px 24px;
+        }
+
+        .page p {
+            padding: 0 24px;
+        }
+
+        .page__title {
+            border-bottom: 1px solid #eee;
+            padding: 24px;
+        }
+
+        .page__list {
+            margin: 0;
+        }
+
+        .page__list__item {
+            padding: 8px;
+        }
+
+        .page__footer {
+            border-top: 1px solid #eee;
+            height: 20px;
         }
     </style>
 </head>
@@ -322,33 +348,24 @@
         </p> -->
 
         <div class="page">
-            <h1>Testing fails if scaffolded model is named "App"</h1>
-
+            <h1 class="page__title">Testing fails if scaffolded model is named "App"</h1>
             <h3>Steps to reproduce</h3>
-            <ol>
-                <li>Roll a new rails 5 app rails new myapp and cd in cd myapp</li>
-                <li>Generate a scaffold for a model named "App" rails g scaffold app</li>
-                <li>Migrate to create the new model rake db:migrate</li>
-                <li>Run tests rails test</li>
+            <ol class="page__list">
+                <li class="page__list__item">Roll a new rails 5 app rails new myapp and cd in cd myapp</li>
+                <li class="page__list__item">Generate a scaffold for a model named "App" rails g scaffold app</li>
+                <li class="page__list__item">Migrate to create the new model rake db:migrate</li>
+                <li class="page__list__item">Run tests rails test</li>
             </ol>
-
             <h3>Expected behavior</h3>
-
             <p>Default scaffold should pass with 7 assertions</p>
-
             <h3>Actual behavior</h3>
-
-            <p>All 7 assertions throw errors. HOWEVER, if you change the variable ' @app'to anything else, such as ' @my_app',in the scaffolded test controller test/controllers/apps_controller_test.rb then it works great.</p>
-
+            <p>All 7 assertions throw errors. HOWEVER, if you change the variable ' @app' to anything else, such as ' @my_app', in the scaffolded test controller <code class="code">test/controllers/apps_controller_test.rb</code> then it works great.</p>
             <h3>Commentary</h3>
-
-            <p>As it is very likely to build a Rails application to manage "apps" and App is likely a popular model name, I recommend keeping the variable used internally in tests as something which could not be generated from the model name, such as [ @_app.</p>
-
-            <p>###](https://github.com/_app```.</p>
-
-            <p>###)System configuration <strong>Rails version</strong>: 5.0.0.1</p>
-
-            <p><strong>Ruby version: 2.3.1</strong></p>
+            <p>As it is very likely to build a Rails application to manage "apps" and App is likely a popular model name, I recommend keeping the variable used internally in tests as something which could not be generated from the model name, such as <code class="code">@_app</code>.</p>
+            <h3>System configuration</h3>
+            <p><strong>Rails version:</strong> 5.0.0.1</p>
+            <p><strong>Ruby version:</strong> 2.3.1</p>
+            <div class="page__footer"></div>
         </div>
 
         <!-- Cards -->
