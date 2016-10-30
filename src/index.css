@@ -127,8 +127,6 @@ h5 {
 }
 
 .pagination__btn:focus {
-    background-color: #606060;
-    border-color: #2e2e2e;
     outline: none;
 }
 

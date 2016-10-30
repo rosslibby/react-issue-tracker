@@ -37,9 +37,11 @@ class Pagination extends Component {
                     onClick={() => { this.props.prev() }}
                 >{ String.fromCharCode('0x2039') }</button>
                 { this.pageButtons(this.props.issues).map((page, index) => {
+                    let className = parseInt(window.history.currentPage, 10) === page ? 'pagination__btn pagination__btn--active' : 'pagination__btn';
+
                     return (
                         <button
-                            className="pagination__btn"
+                            className={ className }
                             key={ index }
                             onClick={() => { this.props.page(page, true) }}
                         >{ page }</button>
