@@ -51,8 +51,8 @@ class Issue extends Component {
     }
 
     linkUsers (summary) {
-        const urlLeft = '(https://github.com/';
-        const urlRight = ')';
+        const urlLeft = '<a href="https://github.com/';
+        const urlRight = '</a>';
         let split = summary.split('@');
 
         for (let i = 0; i < split.length; i++) {
@@ -60,8 +60,8 @@ class Issue extends Component {
             if (i !== split.length - 1 && item.substr(item.length - 1, 1) !== '\'' && item.substr(item.length - 1, 1) !== '`') {
                 let nextItem = split[i + 1];
                 let user = nextItem.split(' ')[0];
-                split[i] = item.substr(0, item.length) + '[';
-                split[i + 1] = '@' + nextItem.replace(' ', ']' + urlLeft + user + urlRight);
+                split[i] = item.substr(0, item.length) + urlLeft + user + '" target="_blank">';
+                split[i + 1] = '@' + nextItem.replace(' ', '' + user + urlRight);
             } else if (item.substr(item.length - 1, 1) === '`' || item.substr(item.length - 1, 1) === '\'') {
                 split[i + 1] = '@' + split[i + 1];
             }
@@ -101,7 +101,9 @@ class Issue extends Component {
             return null;
         });
 
-        const md = new Remarkable();
+        const md = new Remarkable({
+            html: true
+        });
 
         return (
             <div>
