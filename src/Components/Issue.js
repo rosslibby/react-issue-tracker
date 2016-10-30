@@ -56,11 +56,13 @@ class Issue extends Component {
 
         for (let i = 0; i < split.length; i++) {
             let item = split[i];
-            if (i !== split.length - 1) {
+            if (i !== split.length - 1 && item.substr(item.length - 1, 1) !== '\'' && item.substr(item.length - 1, 1) !== '`') {
                 let nextItem = split[i + 1];
                 let user = nextItem.split(' ')[0];
                 split[i] = item.substr(0, item.length) + '[';
                 split[i + 1] = '@' + nextItem.replace(' ', ']' + urlLeft + user + urlRight);
+            } else if (item.substr(item.length - 1, 1) === '`' || item.substr(item.length - 1, 1) === '\'') {
+                split[i + 1] = '@' + split[i + 1];
             }
         }
 
