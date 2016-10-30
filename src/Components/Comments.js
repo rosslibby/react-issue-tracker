@@ -10,6 +10,7 @@ class Comments extends Component {
         return (
             <div>
                 { this.props.comments.map((comment, index) => {
+                    console.log(comment);
                     return (
                         <span
                             key={ index }

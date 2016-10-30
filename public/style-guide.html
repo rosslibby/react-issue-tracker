@@ -286,6 +286,10 @@
             }
         }
 
+        .page--comments {
+            margin-top: 24px;
+        }
+
         .page h3 {
             padding: 24px 24px 4px 24px;
         }
@@ -294,8 +298,12 @@
             padding: 0 24px;
         }
 
-        .page__title {
+        .page__title,
+        .page h3.page__title {
+            align-items: center;
             border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
             padding: 24px;
         }
 
@@ -309,7 +317,19 @@
 
         .page__footer {
             border-top: 1px solid #eee;
-            height: 20px;
+            padding: 8px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comment__data {
+            align-items: flex-start;
+            flex-direction: row;
+            padding: 0 24px 12px 24px;
         }
     </style>
 </head>
@@ -348,7 +368,7 @@
         </p> -->
 
         <div class="page">
-            <h1 class="page__title">Testing fails if scaffolded model is named "App"</h1>
+            <h1 class="page__title">Testing fails if scaffolded model is named "App" <span class="badge">Open</span></h1>
             <h3>Steps to reproduce</h3>
             <ol class="page__list">
                 <li class="page__list__item">Roll a new rails 5 app rails new myapp and cd in cd myapp</li>
@@ -365,7 +385,35 @@
             <h3>System configuration</h3>
             <p><strong>Rails version:</strong> 5.0.0.1</p>
             <p><strong>Ruby version:</strong> 2.3.1</p>
-            <div class="page__footer"></div>
+            <div class="page__footer">
+                <a href="https://github.com/rails/rails/labels/actionpack" target="_blank" class="label">actionpack</a>
+                <a href="https://github.com/rails/rails/labels/needs%20work" target="_blank" class="label">needs work</a>
+            </div>
+        </div>
+
+        <div class="page page--comments">
+            <h3 class="page__title">Comments (2)</h3>
+            <span class="comment">
+                <p>I agree. Do you want to open a pull request?</p>
+                <div class="comment__data">
+                    <div class="user comment__user">
+                        <img src="http://placehold.it/44x44" alt="avatar" class="user user__image" />
+                        <a href="#" class="user user__username" target="_blank">rosslibby</a>
+                    </div>
+                    <span class="card-data">10/22/2016</span>
+                </div>
+            </span>
+            <span class="comment">
+                <p>Sure. I've been using Rails for years but never contributed to core so I'd be happy to.
+                <br>
+                I'll read the how-to-contribute and take a crack at it.</p>
+                <div class="comment__data">
+                    <div class="user">
+                        <img src="http://placehold.it/44x44" alt="avatar" class="user user__image" />
+                        <a href="#" class="user user__username" target="_blank">ross</a>
+                    </div>
+                </div>
+            </span>
         </div>
 
         <!-- Cards -->
