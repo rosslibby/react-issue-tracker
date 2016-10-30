@@ -21,8 +21,10 @@ class Default extends Component {
         if (specific) {
             numPages = numPages || 1;
         } else {
-            numPages = this.state.page + numPages || 1;
+            numPages = this.state.page + numPages || window.history.currentPage || this.props.location.pathname.split('/page/')[1] || 1;
         }
+
+        window.history.currentPage = numPages;
 
         browserHistory.push('/page/' + numPages);
 
