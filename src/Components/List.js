@@ -7,7 +7,7 @@ import User from './User';
 class List extends Component {
     render () {
         return (
-            <ul>
+            <div className="cards">
                 {this.props.items.map((item) => {
                     const titleProps = {
                         click: () => {
@@ -32,7 +32,7 @@ class List extends Component {
                     };
 
                     return (
-                        <li key={ item.id }>
+                        <div className="card" key={ item.id }>
                             <Title { ...titleProps } />
                             <a
                                 className="title-link"
@@ -56,10 +56,10 @@ class List extends Component {
                                 );
                             }) }
                             <span className="comments-count">{ 'Comments: ' + item.comments }</span>
-                        </li>
+                        </div>
                     );
                 })}
-            </ul>
+            </div>
         );
     }
 };

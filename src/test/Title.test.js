@@ -24,10 +24,11 @@ it('should have a click handler for the issue number', () => {
     expect(typeof tree.children[0].props.onClick).toEqual('function');
 });
 
-it('should have <a> as last child', () => {
-    expect(tree.children[1].type).toEqual('a');
+it('should have <h2> with nested <a> as last child', () => {
+    expect(tree.children[1].type).toEqual('h2');
+    expect(tree.children[1].children[0].type).toEqual('a');
 });
 
 it('should have a click handler for the issue title', () => {
-    expect(typeof tree.children[1].props.onClick).toEqual('function');
+    expect(typeof tree.children[1].children[0].props.onClick).toEqual('function');
 });

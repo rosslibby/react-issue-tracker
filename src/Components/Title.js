@@ -4,14 +4,19 @@ import { Link } from 'react-router';
 class Title extends Component {
     render () {
         return (
-            <div className="list-issue-header">
+            <div className="card__header">
                 <span
-                    className="issue-id"
+                    className="badge"
                     onClick={ this.props.click }
                 >
                     { this.props.id }
                 </span>
-                <Link to={'/issue/' + this.props.id }>{ this.props.text }</Link>
+                <h2 className="card__header__title">
+                    <Link
+                        to={'/issue/' + this.props.id }
+                        className="card__header__title__link"
+                    >{ this.props.text }</Link>
+                </h2>
             </div>
         );
     }
