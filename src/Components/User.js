@@ -2,10 +2,12 @@ import React, { Component, PropTypes } from 'react';
 
 class User extends Component {
     render () {
+        const userUrl = 'https://github.com/' + this.props.username;
+
         return (
             <div className={ this.props.className }>
                 <img { ...this.props.avatar } alt={ this.props.alt } className="user user__image" />
-                <a href="https://github.com/{ this.props.username }" target="_blank" className="user user__username">{ this.props.username }</a>
+                <a href={ userUrl } target="_blank" className="user user__username">{ this.props.username }</a>
             </div>
         );
     }

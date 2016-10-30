@@ -17,7 +17,6 @@ it('should set innerHTML', () => {
     const comments = renderer.create(<Comments comments={ data } />);
 
     let tree = comments.toJSON();
-    console.log(tree);
 
     expect(tree.children[1].children[0].props.dangerouslySetInnerHTML.__html).toEqual('<p>test</p>');
 });
