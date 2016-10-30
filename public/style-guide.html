@@ -9,6 +9,7 @@
         ::selection {
             background-color: #ff0066;
             color: #fff;
+            text-shadow: none;
         }
 
         body {
@@ -20,11 +21,14 @@
         .header {
             background-color: #fff;
             box-shadow: 0 2px 2px rgba(0, 0, 0, .17);
-            height: 60px;
             padding: 12px;
             position: fixed;
             top: 0;
             width: 100%;
+        }
+
+        .center-text {
+            justify-content: center;
         }
 
         .main {
@@ -94,6 +98,7 @@
         .pagination {
             display: inline-flex;
             justify-content: center;
+            margin-top: 10px;
             width: 100%;
         }
 
@@ -237,6 +242,23 @@
             flex-direction: row;
         }
 
+        .card-data {
+            background-color: #eee;
+            border-radius: 2px;
+            color: #404040;
+            display: inline-flex;
+            font-size: 12px;
+            font-weight: 100;
+            text-shadow: 0 1px #fefefe;
+            margin-top: 10px;
+            padding: 4px 8px;
+            text-decoration: none;
+        }
+
+        .card-data__link {
+            color: #404040;
+        }
+
         .labels {
             align-items: flex-start;
             display: flex;
@@ -251,27 +273,37 @@
 </head>
 <body>
     <header class="header">
-        <h1>H1: Header</h1>
-        <button class="btn btn--primary">Primary</button>
-        <button class="btn btn--secondary">Secondary</button>
-        <span class="label">Label</span>
-        <span class="badge">Open</span>
-        <span class="badge badge--inverse">Closed</span>
+        <h1 class="center-text">Twitter Code Challenge</h1>
     </header>
     <div class="main">
+        <!-- Primary button -->
+        <!-- <button class="btn btn--primary">Primary</button> -->
+
+        <!-- Secondary button -->
+        <!-- <button class="btn btn--secondary">Secondary</button> -->
+
+        <!-- Label -->
+        <!-- <span class="label">Label</span> -->
+
+        <!-- Badge -->
+        <!-- <span class="badge">Open</span> -->
+
+        <!-- Inverse badge -->
+        <!-- <span class="badge badge--inverse">Closed</span> -->
+
         <!-- <User /> -->
-        <div class="user">
+        <!-- <div class="user">
             <img src="http://placehold.it/44x44" alt="avatar" class="user user__image" />
             <a href="#" class="user user__username" target="_blank">rosslibby</a>
-        </div>
+        </div> -->
 
         <!-- Code -->
-        <code class="code">public static void main(String[] args) {}</code>
+        <!-- <code class="code">public static void main(String[] args) {}</code> -->
 
         <!-- Description -->
-        <p class="description">
+<!--         <p class="description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet aliquam malesuada. Quisque varius consequat dui, quis pulvinar diam vehicula vitae. Phasellus gravida erat id dolor vehicula, eget pretium mauris feugiat. Donec in felis nec <a href="#" class="description__link">@libero</a> congue porta. Nam sit amet purus dapibus, tempor dolor sit amet, pulvinar sem. Vestibulum ac mi lacinia, placerat urna sed, congue quam. Morbi pretium dui sed turpis fermentum, vitae gravida sem pulvinar. Suspendisse potenti. <code class="code">public static void main(String[] args) {}</code> Pellentesque id nisl eget magna convallis dapibus et sed nibh. Praesent facilisis dolor elementum sagittis molestie. Integer a finibus neque. Nunc rutrum elit non metus consectetur dictum. Vestibulum eu fermentum erat.
-        </p>
+        </p> -->
 
         <!-- Cards -->
         <div class="cards">
@@ -290,24 +322,28 @@
                         <img src="https://avatars.githubusercontent.com/u/522155?v=3&s=88" alt="kirs" class="user user__image" />
                         <a href="https://github.com/kirs" class="user user__username" target="_blank">kirs</a>
                     </div>
+                    <span class="card-data">Comments: 4</span>
+                    <span class="card-data"><a href="#" class="card-data__link">external link</a></span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card__header">
-                    <span class="badge">26901</span>
-                    <h2 class="card__header__title"><a href="#" class="card__header__title__link">Use bulk SQL INSERT when bootstrapping fixtures</a></h2>
+                    <span class="badge">26898</span>
+                    <h2 class="card__header__title"><a href="#" class="card__header__title__link">How to monitor DB connections?</a></h2>
                 </div>
-                <p class="excerpt">We've been using this patch at Shopify and it makes fixtures insert way faster because we can leverage bulk INSERT. I think this patch is...</p>
+                <p class="excerpt">I have suspicion that my application have leaking db connections that being borrowed and not returned at the right time. I could not find...</p>
                 <div clas="card__footer">
                     <div class="labels">
                         <a class="label" href="https://github.com/rails/rails/labels/activerecord" target="_blank">activerecord</a>
-                        <a class="label" href="https://github.com/rails/rails/labels/needs%20work" target="_blank">needs work</a>
+                        <a class="label" href="https://github.com/rails/rails/labels/needs%20feedback" target="_blank">needs feedback</a>
                     </div>
                     <div class="user">
-                        <img src="https://avatars.githubusercontent.com/u/522155?v=3&s=88" alt="kirs" class="user user__image" />
-                        <a href="https://github.com/kirs" class="user user__username" target="_blank">kirs</a>
+                        <img src="https://avatars.githubusercontent.com/u/26019?v=3&s=88" alt="Paxa" class="user user__image" />
+                        <a href="https://github.com/Paxa" class="user user__username" target="_blank">Paxa</a>
                     </div>
+                    <span class="card-data">Comments: 2</span>
+                    <span class="card-data"><a href="#" class="card-data__link">external link</a></span>
                 </div>
             </div>
         </div>
