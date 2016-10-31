@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 class Default extends Component {
     constructor (props) {
         super(props);
-        this.state = { items: [], page: 0, issues: 0, current:  };
+        this.state = { items: [], page: 0, issues: 0  };
     }
 
     componentDidMount () {
