@@ -109,6 +109,12 @@ class Issue extends Component {
             <div>
                 <Header />
                 <div className="main">
+                    <div className="controls-wrapper">
+                        <button
+                            className="btn btn--primary"
+                            onClick={() => {window.history.back();}}
+                        >Go back</button>
+                    </div>
                     <div className="page">
                         <h1 className="page__title">{ title } <span className="badge">{ state }</span></h1>
                         <User { ...userProps } />

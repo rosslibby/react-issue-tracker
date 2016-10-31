@@ -60,7 +60,6 @@ class Default extends Component {
     }
 
     render () {
-        console.log(this.state);
         const listProps = {
             items: this.state.items
         };

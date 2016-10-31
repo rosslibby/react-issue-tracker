@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Excerpt from './Excerpt';
-import Labels from './Labels';
-import Title from './Title';
-import User from './User';
+import Card from './Card';
 
 class List extends Component {
     render () {
@@ -31,23 +28,19 @@ class List extends Component {
                         username: item.user.login
                     };
 
+                    const cardProps = {
+                        title: titleProps,
+                        excerpt: excerptProps,
+                        user: userProps,
+                        url: item.html_url,
+                        comments: item.comments,
+                        labels: item.labels,
+                        id: item.id,
+                        key: item.id
+                    };
+
                     return (
-                        <div className="card" key={ item.id }>
-                            <Title { ...titleProps } />
-                            <Excerpt { ...excerptProps }  />
-                            <div>
-                                <Labels labels={ item.labels } />
-                                <User { ...userProps } />
-                                <span className="card-data">{ 'Comments: ' + item.comments }</span>
-                                <span className="card-data">
-                                    <a
-                                        className="card-data__link"
-                                        href={ item.html_url }
-                                        target="_blank"
-                                    >{'external link'}</a>
-                                </span>
-                            </div>
-                        </div>
+                        <Card { ...cardProps } />
                     );
                 })}
             </div>
