@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 class Default extends Component {
     constructor (props) {
         super(props);
-        this.state = { items: [], page: 0, issues: 0 };
+        this.state = { items: [], page: 0, issues: 0, current:  };
     }
 
     componentDidMount () {
@@ -21,7 +21,7 @@ class Default extends Component {
         if (specific) {
             numPages = numPages || 1;
         } else {
-            numPages = this.state.page + numPages || window.history.currentPage || this.props.location.pathname.split('/page/')[1] || 1;
+            numPages = this.state.page + numPages || window.history.currentPage || parseInt(this.props.location.pathname.split('/page/')[1], 10) || 1;
         }
 
         window.history.currentPage = numPages;
@@ -60,6 +60,7 @@ class Default extends Component {
     }
 
     render () {
+        console.log(this.state);
         const listProps = {
             items: this.state.items
         };
